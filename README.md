@@ -1,6 +1,6 @@
 # Indaba Titan Raspberry PI Install
 
-[![](https://images.microbadger.com/badges/image/bootlegger/titan-compact.svg)](https://microbadger.com/images/bootlegger/titan-compact "Get your own image badge on microbadger.com")
+[![Build Status](https://cloud.drone.io/api/badges/our-story-media/titan-pi/status.svg)](https://cloud.drone.io/our-story-media/titan-pi)
 
 Download the SD Card image at []() and then use `Balena Etcher` to copy it to an SD card.
 
