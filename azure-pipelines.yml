@@ -22,9 +22,9 @@ stages:
     steps:
     - task: Bash@3
       inputs:
-        filePath: './install/rpi/build-ci.sh'
-        workingDirectory: $(Build.SourcesDirectory)/install/rpi/
+        filePath: './rpi/build-ci.sh'
+        workingDirectory: $(Build.SourcesDirectory)/rpi/
     - task: PublishPipelineArtifact@1
       inputs:
-        targetPath: './install/rpi/pi-gen/deploy'
+        targetPath: './rpi/pi-gen/deploy'
         artifactName: disk-image
