@@ -24,8 +24,8 @@ chmod +x ./pi-gen/stage2/01-sys-tweaks/02-run.sh
 
 rm ./pi-gen/stage2/EXPORT_NOOBS
 
-touch ./pi-gen/stage0/SKIP 
-touch ./pi-gen/stage1/SKIP
+# touch ./pi-gen/stage0/SKIP 
+# touch ./pi-gen/stage1/SKIP
 
 # rm ./pi-gen/stage0/SKIP
 # rm ./pi-gen/stage1/SKIP
