@@ -10,8 +10,6 @@ trigger:
 steps:
 - name: build
   image: billyteves/ubuntu-dind
-  volumes:
-    - "/var/run/docker.sock:/var/run/docker.sock"
   commands:
     - bash -c "rpi/build.sh"
 
