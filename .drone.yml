@@ -15,7 +15,7 @@ steps:
 - name: build
   image: sofianinho/dind
   commands:
-    - cd rpi && bash -c "build.sh"
+    - bash -c "rpi/build.sh"
 
 # - name: docker  
 #   image: plugins/docker

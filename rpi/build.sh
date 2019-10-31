@@ -1,3 +1,7 @@
+#!/bin/bash
+
+cd "$(dirname "$0")"
+
 if [ -d "pi-gen" ]; then
     echo "pi-gen already cloned"
 else
