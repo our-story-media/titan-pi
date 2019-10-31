@@ -7,6 +7,10 @@ trigger:
   event:
     - tag
 
+platform:
+  os: linux
+  arch: arm64
+
 steps:
 - name: build
   image: billyteves/ubuntu-dind
