@@ -13,7 +13,7 @@ platform:
 
 steps:
 - name: build
-  image: billyteves/ubuntu-dind
+  image: sofianinho/dind
   commands:
     - bash -c "rpi/build.sh"
 
