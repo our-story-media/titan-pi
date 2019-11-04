@@ -23,7 +23,7 @@ stages:
     - task: Bash@3
       inputs:
         filePath: './rpi/build.sh'
-        workingDirectory: $(Build.SourcesDirectory)/rpi/
+        workingDirectory: './rpi/'
     - task: PublishPipelineArtifact@1
       inputs:
         targetPath: './rpi/pi-gen/deploy'

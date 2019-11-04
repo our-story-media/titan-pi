@@ -2,6 +2,8 @@
 
 cd "$(dirname "$0")"
 
+echo "Working in $(pwd)"
+
 if [ -d "pi-gen" ]; then
     echo "pi-gen already cloned"
 else
