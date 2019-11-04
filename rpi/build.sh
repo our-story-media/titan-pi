@@ -38,9 +38,11 @@ if [ -f "./pi-gen/stage2/01-sys-tweaks/files/indaba-update.tar" ]; then
   echo "tar already exists"
 else
 
-  docker pull bootlegger/titan-compact:latest
+  curl -sSL https://d2co3wsaqlrb1k.cloudfront.net/indaba-update.tar --output ./pi-gen/stage2/01-sys-tweaks/files/indaba-update.tar
 
-  docker save -o ./pi-gen/stage2/01-sys-tweaks/files/indaba-update.tar bootlegger/titan-compact:latest
+  # docker pull bootlegger/titan-compact:latest
+
+  # docker save -o ./pi-gen/stage2/01-sys-tweaks/files/indaba-update.tar bootlegger/titan-compact:latest
 
   # docker save -o ./pi-gen/stage2/01-sys-tweaks/files/indaba-update.tar alpine:latest
 

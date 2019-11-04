@@ -16,19 +16,3 @@ steps:
   image: sofianinho/dind
   commands:
     - bash -c "rpi/build.sh"
-
-# - name: docker  
-#   image: plugins/docker
-#   settings:
-#     repo: bootlegger/titan-compact
-#     dockerfile: docker/titan/Dockerfile
-#     auto_tag: true
-#     tags:
-#       - latest
-#     username:
-#       from_secret: docker_username
-#     password:
-#       from_secret: docker_password
-#     build_args:
-#       - TARGETPLATFORM=linux/arm/v7
-#     context: docker/titan/
