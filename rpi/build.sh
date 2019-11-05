@@ -1,9 +1,5 @@
 #!/bin/bash
 
-echo "Using AWS ID: $AWS_ACCESS_KEY_ID"
-
-exit 1
-
 echo "Working in $(pwd)"
 
 if [ -d "pi-gen" ]; then
