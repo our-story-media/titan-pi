@@ -21,7 +21,3 @@ stages:
       inputs:
         filePath: './rpi/build.sh'
         workingDirectory: '$(Build.SourcesDirectory)/rpi/'
-    - task: PublishPipelineArtifact@1
-      inputs:
-        targetPath: './rpi/pi-gen/deploy'
-        artifactName: disk-image

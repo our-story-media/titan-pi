@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# cd "$(dirname "$0")"
-
 echo "Working in $(pwd)"
 
 if [ -d "pi-gen" ]; then
@@ -39,15 +37,8 @@ rm ./pi-gen/stage2/EXPORT_NOOBS
 if [ -f "./pi-gen/stage2/01-sys-tweaks/files/indaba-update.tar" ]; then
   echo "tar already exists"
 else
-
+  curl -sSL https://d2co3wsaqlrb1k.cloudfront.net/indaba-update.version --output ./VERSION
   curl -sSL https://d2co3wsaqlrb1k.cloudfront.net/indaba-update.tar --output ./pi-gen/stage2/01-sys-tweaks/files/indaba-update.tar
-
-  # docker pull bootlegger/titan-compact:latest
-
-  # docker save -o ./pi-gen/stage2/01-sys-tweaks/files/indaba-update.tar bootlegger/titan-compact:latest
-
-  # docker save -o ./pi-gen/stage2/01-sys-tweaks/files/indaba-update.tar alpine:latest
-
 fi
 
 touch ./pi-gen/stage3/SKIP ./pi-gen/stage4/SKIP ./pi-gen/stage5/SKIP
@@ -59,8 +50,19 @@ docker-compose up -d
 # Uncomment the following line to speed up building
 # touch ./stage0/SKIP ./stage1/SKIP
 
-DOCKER_BUILDKIT=1 APT_PROXY=http://172.17.0.1:3142 CLEAN=1 CONTINUE=1 ./build-docker.sh
+# DOCKER_BUILDKIT=1 APT_PROXY=http://172.17.0.1:3142 CLEAN=1 CONTINUE=1 ./build-docker.sh
 
-sleep 1
+mkdir -p ./sdcard
 
-echo "Final file is located at " `ls -Art ./deploy/*.zip | tail -n 1`
+VERSION=`cat ./VERSION`
+
+cp $(ls -Art ./deploy/*.zip | tail -n 1) ./sdcard/indaba-rpi-$VERSION.zip
+
+curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
+export PATH=~/bin:$PATH
+
+aws --version
+
+# sleep 1
+
+# echo "Final file is located at " `ls -Art ./deploy/*.zip | tail -n 1`
