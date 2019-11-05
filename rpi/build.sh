@@ -37,6 +37,7 @@ rm ./pi-gen/stage2/EXPORT_NOOBS
 if [ -f "./pi-gen/stage2/01-sys-tweaks/files/indaba-update.tar" ]; then
   echo "tar already exists"
 else
+  echo "downloading docker tar file"
   curl -sSL https://d2co3wsaqlrb1k.cloudfront.net/indaba-update.version --output ./VERSION
   curl -sSL https://d2co3wsaqlrb1k.cloudfront.net/indaba-update.tar --output ./pi-gen/stage2/01-sys-tweaks/files/indaba-update.tar
 fi
@@ -54,7 +55,7 @@ docker-compose up -d
 
 mkdir -p ./sdcard
 
-VERSION=`cat ./VERSION`
+VERSION=`cat ../VERSION`
 
 FILENAME=indaba-rpi-$VERSION.zip
 
