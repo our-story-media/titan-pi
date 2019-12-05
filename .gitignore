@@ -1,3 +1,6 @@
 pi-gen
 node_modules
 .DS_Store
+sdcard
+awscli-bundle.zip
+VERSION
