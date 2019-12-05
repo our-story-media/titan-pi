@@ -1,16 +1,5 @@
 #!/bin/bash
 
-curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
-export PATH=~/bin:$PATH
-
-mkdir -p ./sdcard
-
-touch ./sdcard/test.zip
-
-aws s3 cp ./sdcard/test.zip s3://ourstory-v2-live/titan/
-
-exit
-
 echo "Working in $(pwd)"
 
 if [ -d "pi-gen" ]; then
@@ -50,7 +39,7 @@ if [ -f "./pi-gen/stage2/01-sys-tweaks/files/indaba-update.tar" ]; then
 else
   echo "downloading docker tar file"
   curl -sSL https://d2co3wsaqlrb1k.cloudfront.net/indaba-update.version --output ./VERSION
-  curl -sSL https://d2co3wsaqlrb1k.cloudfront.net/indaba-update.tar --output ./pi-gen/stage2/01-sys-tweaks/files/indaba-update.tar
+  # curl -sSL https://d2co3wsaqlrb1k.cloudfront.net/indaba-update.tar --output ./pi-gen/stage2/01-sys-tweaks/files/indaba-update.tar
 fi
 
 touch ./pi-gen/stage3/SKIP ./pi-gen/stage4/SKIP ./pi-gen/stage5/SKIP
@@ -74,16 +63,15 @@ VERSION=`cat ./VERSION`
 FILENAME=indaba-rpi-$VERSION.zip
 
 #for debug
-touch ./pi-gen/deploy/test.zip
-FILENAME=test.zip
+touch ./pi-gen/deploy/deploy.zip
 
 cp $(ls -Art ./pi-gen/deploy/*.zip | tail -n 1) ./sdcard/$FILENAME
 
 curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
 export PATH=~/bin:$PATH
 
-# aws s3 cp ./sdcard/$FILENAME s3://ourstory-v2-live/titan/
-# aws s3 cp s3://ourstory-v2-live/titan/$FILENAME s3://ourstory-v2-live/titan/indaba-rpi.zip
+aws s3 cp ./sdcard/$FILENAME s3://ourstory-v2-live/titan/
+aws s3 cp s3://ourstory-v2-live/titan/$FILENAME s3://ourstory-v2-live/titan/indaba-rpi.zip
 
 # sleep 1
 
