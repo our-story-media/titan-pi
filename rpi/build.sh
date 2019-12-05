@@ -64,6 +64,7 @@ FILENAME=indaba-rpi-$VERSION.zip
 
 #for debug
 touch ./pi-gen/deploy/test.zip
+FILENAME=test.zip
 
 cp $(ls -Art ./pi-gen/deploy/*.zip | tail -n 1) ./sdcard/$FILENAME
 
