@@ -1,6 +1,13 @@
 #!/bin/bash
 
-echo $AWS_ACCESS_KEY_ID 
+curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
+export PATH=~/bin:$PATH
+
+mkdir -p ./sdcard
+
+touch ./sdcard/test.zip
+
+aws s3 cp ./sdcard/test.zip s3://ourstory-v2-live/titan/
 
 exit
 
