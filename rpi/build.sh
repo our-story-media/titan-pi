@@ -70,9 +70,5 @@ cp $(ls -Art ./pi-gen/deploy/*.zip | tail -n 1) ./sdcard/$FILENAME
 curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
 export PATH=~/bin:$PATH
 
-aws --region ap-southeast-2 s3 cp ./sdcard/$FILENAME s3://ourstory-v2-live/titan/
-aws --region ap-southeast-2 s3 cp s3://ourstory-v2-live/titan/$FILENAME s3://ourstory-v2-live/titan/indaba-rpi.zip
-
-# sleep 1
-
-# echo "Final file is located at " `ls -Art ./deploy/*.zip | tail -n 1`
+aws s3 cp ./sdcard/$FILENAME s3://ourstory-v2-live/titan/
+aws s3 cp s3://ourstory-v2-live/titan/$FILENAME s3://ourstory-v2-live/titan/indaba-rpi.zip
