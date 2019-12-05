@@ -56,7 +56,9 @@ touch ./pi-gen/stage4/SKIP_IMAGES ./pi-gen/stage5/SKIP_IMAGES
 
 mkdir -p ./sdcard
 
-VERSION=`cat ../VERSION`
+mkdir -p ./pi-gen/deploy
+
+VERSION=`cat ./VERSION`
 
 FILENAME=indaba-rpi-$VERSION.zip
 
