@@ -45,13 +45,14 @@ fi
 touch ./pi-gen/stage3/SKIP ./pi-gen/stage4/SKIP ./pi-gen/stage5/SKIP
 touch ./pi-gen/stage4/SKIP_IMAGES ./pi-gen/stage5/SKIP_IMAGES
 
-cd pi-gen
-docker-compose up -d
+# cd pi-gen
+# docker-compose up -d
 
 # Uncomment the following line to speed up building
 # touch ./stage0/SKIP ./stage1/SKIP
 
-DOCKER_BUILDKIT=1 APT_PROXY=http://172.17.0.1:3142 CLEAN=1 CONTINUE=1 ./build-docker.sh
+# FOR DEBUG:
+# DOCKER_BUILDKIT=1 CLEAN=1 CONTINUE=1 ./build-docker.sh
 
 mkdir -p ./sdcard
 
@@ -60,9 +61,9 @@ VERSION=`cat ../VERSION`
 FILENAME=indaba-rpi-$VERSION.zip
 
 #for debug
-touch ./deploy/test.zip
+touch ./pi-gen/deploy/test.zip
 
-cp $(ls -Art ./deploy/*.zip | tail -n 1) ./sdcard/$FILENAME
+cp $(ls -Art ./pi-gen/deploy/*.zip | tail -n 1) ./sdcard/$FILENAME
 
 curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
 export PATH=~/bin:$PATH
