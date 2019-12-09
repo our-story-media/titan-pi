@@ -39,7 +39,7 @@ if [ -f "./pi-gen/stage2/01-sys-tweaks/files/indaba-update.tar" ]; then
 else
   echo "downloading docker tar file"
   curl -sSL https://d2co3wsaqlrb1k.cloudfront.net/indaba-update.version --output ./VERSION
-  # curl -sSL https://d2co3wsaqlrb1k.cloudfront.net/indaba-update.tar --output ./pi-gen/stage2/01-sys-tweaks/files/indaba-update.tar
+  curl -sSL https://d2co3wsaqlrb1k.cloudfront.net/indaba-update.tar --output ./pi-gen/stage2/01-sys-tweaks/files/indaba-update.tar
 fi
 
 touch ./pi-gen/stage3/SKIP ./pi-gen/stage4/SKIP ./pi-gen/stage5/SKIP
@@ -51,8 +51,7 @@ touch ./pi-gen/stage4/SKIP_IMAGES ./pi-gen/stage5/SKIP_IMAGES
 # Uncomment the following line to speed up building
 # touch ./stage0/SKIP ./stage1/SKIP
 
-# FOR DEBUG:
-# DOCKER_BUILDKIT=1 CLEAN=1 CONTINUE=1 ./build-docker.sh
+DOCKER_BUILDKIT=1 CLEAN=1 CONTINUE=1 ./build-docker.sh
 
 mkdir -p ./sdcard
 
@@ -63,12 +62,12 @@ VERSION=`cat ./VERSION`
 FILENAME=indaba-rpi-$VERSION.zip
 
 #for debug
-touch ./pi-gen/deploy/deploy.zip
+# touch ./pi-gen/deploy/deploy.zip
 
 cp $(ls -Art ./pi-gen/deploy/*.zip | tail -n 1) ./sdcard/$FILENAME
 
 curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
 export PATH=~/bin:$PATH
 
-aws --debug s3 cp ./sdcard/$FILENAME s3://ourstory-v2-live/titan/
-aws --debug s3 cp s3://ourstory-v2-live/titan/$FILENAME s3://ourstory-v2-live/titan/indaba-rpi.zip
+aws s3 cp ./sdcard/$FILENAME s3://ourstory-v2-live/titan/
+aws s3 cp s3://ourstory-v2-live/titan/$FILENAME s3://ourstory-v2-live/titan/indaba-rpi.zip
