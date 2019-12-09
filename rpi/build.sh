@@ -62,7 +62,7 @@ FILENAME=indaba-rpi-$VERSION.zip
 #for debug
 # touch ./pi-gen/deploy/deploy.zip
 
-cp $(ls -Art ./pi-gen/deploy/*.zip | tail -n 1) ./sdcard/$FILENAME
+cp $(ls -Art ./deploy/*.zip | tail -n 1) ./sdcard/$FILENAME
 
 curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
 export PATH=~/bin:$PATH
