@@ -55,9 +55,7 @@ DOCKER_BUILDKIT=1 CLEAN=1 CONTINUE=1 ./build-docker.sh
 
 mkdir -p ./sdcard
 
-mkdir -p ./pi-gen/deploy
-
-VERSION=`cat ./VERSION`
+VERSION=`cat ../VERSION`
 
 FILENAME=indaba-rpi-$VERSION.zip
 
