@@ -117,7 +117,7 @@ sudo docker run \
  -v indaba-db:/data/db \
  -v indaba-redis:/redis \
  -v "/indaba/upload:/usr/src/app/upload" \
- -v /media/usb0:/usbdrive
+ -v /media:/usbdrive \
  bootlegger/titan-compact
 
 echo_time "Printing Password"
