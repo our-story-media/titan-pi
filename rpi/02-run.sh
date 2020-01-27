@@ -35,6 +35,9 @@ curl -sSL https://get.docker.com/ | sh
 # update user group
 usermod -aG docker indaba
 
+# Install Argon Fan & Power
+curl -k https://download.argon40.com/argon1.sh | bash
+
 touch /indaba/.supervisorinstalled
 
 # disable splash
