@@ -53,6 +53,9 @@ apt install fbi usbmount
 apt install dnsmasq
 
 echo "address=/#/10.10.10.1" >> /etc/dnsmasq.conf
+echo "no-resolv" >> /etc/dnsmasq.conf
+echo "bogus-priv" >> /etc/dnsmasq.conf
+echo "domain-needed" >> /etc/dnsmasq.conf
 
 #enable indaba
 systemctl enable indaba
