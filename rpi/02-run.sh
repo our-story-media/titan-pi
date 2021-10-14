@@ -49,6 +49,11 @@ sed -i "s/PrivateMounts=.*/PrivateMounts=no/g" /lib/systemd/system/systemd-udevd
 # install framebuffer image viewer & automount usb
 apt install fbi usbmount
 
+# install dnsmasq
+apt install dnsmasq
+
+echo "address=/#/10.10.10.1" >> /etc/dnsmasq.conf
+
 #enable indaba
 systemctl enable indaba
 
