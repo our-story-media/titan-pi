@@ -1,16 +1,18 @@
 {
   "name": "supervisor",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
-  "main": "index.js",
+  "main": "indaba-supervisor.js",
   "scripts": {
     "start": "node indaba-supervisor.js"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Tom Bartindale <tom.bartindale@monash.edu>",
+  "license": "MIT",
   "dependencies": {
+    "fs-extra": "10.0.0",
     "console-stamp": "^3.0.0-rc2.0",
     "drivelist": "8.0.7",
-    "lodash": "^4.17.15"
+    "lodash": "^4.17.15",
+    "express": "4.17.1"
   }
 }
