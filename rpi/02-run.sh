@@ -52,6 +52,9 @@ apt install fbi usbmount
 # install dnsmasq
 apt install dnsmasq
 
+# install pipeviewer
+apt install pv
+
 echo "address=/#/10.10.10.1" >> /etc/dnsmasq.conf
 echo "no-resolv" >> /etc/dnsmasq.conf
 echo "bogus-priv" >> /etc/dnsmasq.conf

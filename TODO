@@ -1,0 +1,5 @@
+- Check update cycle (usb tar file)
+- Check backup cycle (usb)
+- Check restore cycle (usb)
+- Check power loss cycle
+- Check rendering processes (selective rendering)
