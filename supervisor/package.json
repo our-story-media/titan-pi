@@ -9,10 +9,11 @@
   "author": "Tom Bartindale <tom.bartindale@monash.edu>",
   "license": "MIT",
   "dependencies": {
-    "fs-extra": "10.0.0",
     "console-stamp": "^3.0.0-rc2.0",
     "drivelist": "8.0.7",
+    "express": "4.17.1",
+    "fs-extra": "10.0.0",
     "lodash": "^4.17.15",
-    "express": "4.17.1"
+    "pkg": "^5.3.3"
   }
 }
