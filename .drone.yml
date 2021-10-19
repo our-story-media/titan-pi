@@ -7,10 +7,6 @@ platform:
   os: linux
   arch: arm
 
-trigger:
-  event:
-    - tag
-
 steps:
 - name: Build and Push  
   image: plugins/docker
