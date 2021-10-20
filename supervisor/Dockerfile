@@ -2,7 +2,7 @@ FROM node:14-stretch
 
 WORKDIR /build
 
-RUN apt-get update && apt-get install -y build-essential
+RUN apt-get update && apt-get install -y build-essential libssl-dev
 
 RUN npm config set unsafe-perm true && npm install -g pkg
 
