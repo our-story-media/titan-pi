@@ -2,7 +2,7 @@ FROM node:14-stretch
 
 WORKDIR /build
 
-RUN apt-get install -y build-essentials
+RUN apt-get install -y build-essential
 
 RUN npm config set unsafe-perm true && npm install -g pkg
 
