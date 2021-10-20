@@ -10,11 +10,11 @@ mkdir -p "${ROOTFS_DIR}/indaba"
 
 install -m 644 files/indaba-update.tar "${ROOTFS_DIR}/indaba/"
 
-install -m 774 files/supervisor "${ROOTFS_DIR}/indaba/supervisor"
+cp -R files/supervisor "${ROOTFS_DIR}/indaba/supervisor"
 
 install -m 644 files/splash.png "${ROOTFS_DIR}/opt/splash.png"
 
-chmod +x "${ROOTFS_DIR}/indaba/indaba-supervisor"
+# chmod +x "${ROOTFS_DIR}/indaba/indaba-supervisor"
 
 install -m 774 files/gettitan "${ROOTFS_DIR}/indaba/"
 
