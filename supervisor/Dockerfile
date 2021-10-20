@@ -1,6 +1,8 @@
-FROM node:16-stretch
+FROM node:14-stretch
 
 WORKDIR /build
+
+RUN apt-get install build-essentials
 
 RUN npm config set unsafe-perm true && npm install -g pkg
 
@@ -18,6 +20,6 @@ COPY . .
 
 # RUN pkg -t node14-linux-armv7 dummy.js
 
-RUN pkg ./src/indaba-supervisor.js --targets "node16-linux-armv7" --no-bytecode
+RUN pkg ./src/indaba-supervisor.js --targets "node14-linux-armv7"
 
 # CMD cd src && pkg indaba-supervisor.js --targets "node14-linuxstatic-armv7"
