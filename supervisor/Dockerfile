@@ -1,8 +1,8 @@
-FROM node:14-stretch
+FROM node:12-stretch
 
 WORKDIR /build
 
-RUN apt-get update && apt-get install -y build-essential libssl-dev
+# RUN apt-get update && apt-get install -y build-essential libssl-dev
 
 RUN npm config set unsafe-perm true && npm install -g pkg
 
@@ -20,6 +20,6 @@ COPY . .
 
 # RUN pkg -t node14-linux-armv7 dummy.js
 
-RUN pkg ./src/indaba-supervisor.js --targets "node14-linux-armv7"
+RUN pkg ./src/indaba-supervisor.js --targets "node12-linux-armv7"
 
 # CMD cd src && pkg indaba-supervisor.js --targets "node14-linuxstatic-armv7"
