@@ -10,7 +10,7 @@ fi
 
 cp config ./pi-gen/config
 
-cp ../supervisor ./pi-gen/stage2/01-sys-tweaks/files/supervisor
+cp -R ../supervisor ./pi-gen/stage2/01-sys-tweaks/files/supervisor
 
 cp ../gettitan ./pi-gen/stage2/01-sys-tweaks/files
 
