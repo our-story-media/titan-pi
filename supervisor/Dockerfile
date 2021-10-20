@@ -1,4 +1,4 @@
-FROM node:12.2-stretch
+FROM node:12-stretch
 
 WORKDIR /build
 
@@ -10,11 +10,13 @@ WORKDIR /build
 
 RUN npm config set unsafe-perm true && npm install -g pkg@4.4.6
 
-COPY package.json .
+# COPY package.json .
 
-RUN npm i --silent
+# RUN npm i --silent
 
 COPY . .
+
+RUN mkdir -p /pkgcache/v2.6 && mv ./uploaded-v2.6-node-v12.2.0-linux-armv7 /pkgcache/v2.6/uploaded-v2.6-node-v12.18.1-linux-armv7
 
 # COPY dummy.js /build/
 
@@ -22,8 +24,8 @@ COPY . .
 
 # RUN pkg -d --targets "latest-linuxstatic-armv7" dummy.js
 
-# RUN pkg -t node14-linux-armv7 dummy.js
+RUN PKG_CACHE_PATH=/pkgcache pkg -t "node12-linux-armv7" ./src/indaba-supervisor.js
 
-RUN pkg ./src/indaba-supervisor.js --targets "host"
+# RUN pkg ./src/indaba-supervisor.js --targets "host"
 
 # CMD cd src && pkg indaba-supervisor.js --targets "node14-linuxstatic-armv7"

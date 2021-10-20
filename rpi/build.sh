@@ -10,7 +10,7 @@ fi
 
 cp config ./pi-gen/config
 
-cp ../supervisor/build/indaba-supervisor ./pi-gen/stage2/01-sys-tweaks/files
+cp ../supervisor ./pi-gen/stage2/01-sys-tweaks/files/supervisor
 
 cp ../gettitan ./pi-gen/stage2/01-sys-tweaks/files
 

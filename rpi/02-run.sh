@@ -10,7 +10,7 @@ mkdir -p "${ROOTFS_DIR}/indaba"
 
 install -m 644 files/indaba-update.tar "${ROOTFS_DIR}/indaba/"
 
-install -m 774 files/indaba-supervisor "${ROOTFS_DIR}/indaba/"
+install -m 774 files/supervisor "${ROOTFS_DIR}/indaba/supervisor"
 
 install -m 644 files/splash.png "${ROOTFS_DIR}/opt/splash.png"
 
@@ -38,7 +38,7 @@ usermod -aG docker indaba
 # Install Argon Fan & Power
 curl -k https://download.argon40.com/argon1.sh | bash
 
-touch /indaba/.supervisorinstalled
+
 
 # disable splash
 sed -i -e "$ i\disable_splash=1" /boot/config.txt
@@ -49,11 +49,20 @@ sed -i "s/PrivateMounts=.*/PrivateMounts=no/g" /lib/systemd/system/systemd-udevd
 # install framebuffer image viewer & automount usb
 apt install fbi usbmount
 
-# install dnsmasq
-apt install dnsmasq
-
 # install pipeviewer
 apt install pv
+
+# install node
+curl -fsSL https://deb.nodesource.com/setup_14.x | -E bash -
+apt-get install -y nodejs
+
+# install supervisor
+cd /indaba/supervisor && npm i
+
+touch /indaba/.supervisorinstalled
+
+# install dnsmasq
+apt install dnsmasq
 
 echo "address=/#/10.10.10.1" >> /etc/dnsmasq.conf
 echo "no-resolv" >> /etc/dnsmasq.conf

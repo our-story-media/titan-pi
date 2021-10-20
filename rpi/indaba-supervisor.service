@@ -4,7 +4,7 @@ After=docker.service
 
 [Service]
 Type=simple
-ExecStart=/bin/bash -c 'exec /indaba/indaba-supervisor >> /indaba/supervisor.log 2>&1'
+ExecStart=/bin/bash -c 'exec /usr/bin/node /indaba/supervisor/indaba-supervisor.js >> /indaba/supervisor.log 2>&1'
 Restart=on-failure
 
 [Install]
