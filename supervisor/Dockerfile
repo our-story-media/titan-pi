@@ -8,7 +8,7 @@ WORKDIR /build
 
 # RUN mkdir -p ~/.pkg-cache/v3.2 && mv fetched-v14.17.6-linux-armv6 ~/.pkg-cache/v3.2
 
-RUN npm config set unsafe-perm true && npm install -g pkg
+RUN npm config set unsafe-perm true && npm install -g pkg@4.4.6
 
 COPY package.json .
 
