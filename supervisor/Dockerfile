@@ -8,7 +8,7 @@ COPY package.json .
 
 RUN npm i --silent
 
-# COPY . .
+COPY . .
 
 # COPY dummy.js /build/
 
