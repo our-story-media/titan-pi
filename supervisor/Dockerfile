@@ -1,4 +1,4 @@
-FROM node:14-stretch
+FROM node:12-stretch
 
 WORKDIR /build
 
@@ -18,9 +18,6 @@ COPY . .
 
 # RUN pkg -t node14-linux-armv7 dummy.js
 
-RUN pkg ./src/indaba-supervisor.js --targets "node14-linux-armv7"
+RUN pkg ./src/indaba-supervisor.js --targets "node12-linux-armv7"
 
 # CMD cd src && pkg indaba-supervisor.js --targets "node14-linuxstatic-armv7"
-
-
-
