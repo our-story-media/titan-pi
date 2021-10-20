@@ -12,11 +12,11 @@ steps:
   image: plugins/docker
   settings:
     repo: bootlegger/indaba-supervisor
-    dockerfile: Dockerfile
+    dockerfile: ./supervisor/Dockerfile
     username:
       from_secret: docker_username
     password:
       from_secret: docker_password
     build_args:
       - TARGETPLATFORM=linux/arm/v7
-    context: .
+    context: ./supervisor
