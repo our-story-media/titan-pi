@@ -11,8 +11,8 @@ jobs:
       - checkout
       - run:
           name: "Build RPI"
-          command: './rpi/build-native.sh'
-          working_directory: './rpi/'
+          command: 'build-native.sh'
+          working_directory: './rpi'
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
