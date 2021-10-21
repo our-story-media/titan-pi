@@ -39,7 +39,7 @@ stages:
 - stage: Build
   displayName: Build image
   jobs:  
-  - job: BuildNative
+  - job: Build
     displayName: Build
     pool:
       vmImage: 'ubuntu-16.04'
