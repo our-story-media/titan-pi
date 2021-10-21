@@ -56,7 +56,7 @@ set -e
 
 # DOCKER_BUILDKIT=1 CLEAN=1 CONTINUE=1 ./build-docker.sh
 
-./build.sh
+sudo -S ./build.sh
 
 mkdir -p ./sdcard
 
