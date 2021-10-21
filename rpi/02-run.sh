@@ -51,7 +51,7 @@ apt-get install -y fbi usbmount
 apt-get install -y pv
 
 # install node
-curl -fsSL https://deb.nodesource.com/setup_14.x | -E bash -
+curl -fsSL https://deb.nodesource.com/setup_14.x | bash -
 apt-get install -y nodejs
 
 # install supervisor
