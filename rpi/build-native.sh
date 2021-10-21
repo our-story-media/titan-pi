@@ -56,7 +56,7 @@ set -e
 
 # DOCKER_BUILDKIT=1 CLEAN=1 CONTINUE=1 ./build-docker.sh
 
-sudo apt-get install coreutils quilt parted qemu-user-static debootstrap zerofree zip \
+sudo apt-get update && sudo apt-get install coreutils quilt parted qemu-user-static debootstrap zerofree zip \
 dosfstools libarchive-tools libcap2-bin grep rsync xz-utils file git curl bc \
 qemu-utils kpartx
 
