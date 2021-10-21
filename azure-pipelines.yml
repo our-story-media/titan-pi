@@ -1,7 +1,32 @@
-# Docker
-# Build a Docker image 
-# https://docs.microsoft.com/azure/devops/pipelines/languages/docker
+# # Docker
+# # Build a Docker image 
+# # https://docs.microsoft.com/azure/devops/pipelines/languages/docker
 
+
+
+# trigger:
+# - master
+
+# resources:
+# - repo: self
+
+# stages:
+# - stage: Build
+#   displayName: Build image
+#   jobs:  
+#   - job: Build
+#     displayName: Build
+#     pool:
+#       vmImage: 'ubuntu-latest'
+#     steps:
+#     - task: Bash@3
+#       inputs:
+#         filePath: './rpi/build.sh'
+#         workingDirectory: '$(Build.SourcesDirectory)/rpi/'
+#       env:
+#         AWS_ACCESS_KEY_ID: $(AWS_ACCESS_KEY_ID)
+#         AWS_SECRET_ACCESS_KEY: $(AWS_SECRET_ACCESS_KEY)
+#         AWS_DEFAULT_REGION: ap-southeast-2
 
 
 trigger:
@@ -14,14 +39,14 @@ stages:
 - stage: Build
   displayName: Build image
   jobs:  
-  - job: Build
+  - job: BuildNative
     displayName: Build
     pool:
-      vmImage: 'ubuntu-latest'
+      vmImage: 'ubuntu-16.04'
     steps:
     - task: Bash@3
       inputs:
-        filePath: './rpi/build.sh'
+        filePath: './rpi/build-native.sh'
         workingDirectory: '$(Build.SourcesDirectory)/rpi/'
       env:
         AWS_ACCESS_KEY_ID: $(AWS_ACCESS_KEY_ID)
