@@ -6,12 +6,12 @@ version: 2.1
 jobs:
   build: # name of your job
     machine: # executor type
-      image: ubuntu-1604:202104-01
+      image: ubuntu-latest
     steps:
       - checkout
       - run:
           name: "Build RPI"
-          command: 'sh build-native.sh'
+          command: 'sh build.sh'
           working_directory: './rpi'
 
 # Invoke jobs via workflows
