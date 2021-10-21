@@ -38,18 +38,21 @@ if [ -f "./pi-gen/stage2/01-sys-tweaks/files/indaba-update.tar" ]; then
   echo "tar already exists"
 else
   echo "downloading docker tar file"
-  curl -sSL https://d2co3wsaqlrb1k.cloudfront.net/indaba-update.version --output ./VERSION
-  curl -sSL https://d2co3wsaqlrb1k.cloudfront.net/indaba-update.tar --output ./pi-gen/stage2/01-sys-tweaks/files/indaba-update.tar
+  curl -SL https://d2co3wsaqlrb1k.cloudfront.net/indaba-update.version --output ./VERSION
+  curl -SL https://d2co3wsaqlrb1k.cloudfront.net/indaba-update.tar --output ./pi-gen/stage2/01-sys-tweaks/files/indaba-update.tar
 fi
 
 touch ./pi-gen/stage3/SKIP ./pi-gen/stage4/SKIP ./pi-gen/stage5/SKIP
 touch ./pi-gen/stage4/SKIP_IMAGES ./pi-gen/stage5/SKIP_IMAGES
 
 cd pi-gen
-# docker-compose up -d
+
+docker-compose up -d
 
 # Uncomment the following line to speed up building
 # touch ./stage0/SKIP ./stage1/SKIP
+
+set -e
 
 DOCKER_BUILDKIT=1 CLEAN=1 CONTINUE=1 ./build-docker.sh
 

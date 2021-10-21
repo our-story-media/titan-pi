@@ -17,8 +17,7 @@ stages:
   - job: Build
     displayName: Build
     pool:
-      name: Default
-      demands: ISLOCAL
+      vmImage: 'ubuntu-latest'
     steps:
     - task: Bash@3
       inputs:
