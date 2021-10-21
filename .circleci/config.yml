@@ -11,7 +11,7 @@ jobs:
       - checkout
       - run:
           name: "Build RPI"
-          command: 'build-native.sh'
+          command: 'sh build-native.sh'
           working_directory: './rpi'
 
 # Invoke jobs via workflows
