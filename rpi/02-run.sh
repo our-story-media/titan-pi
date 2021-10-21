@@ -45,10 +45,10 @@ sed -i -e "$ i\disable_splash=1" /boot/config.txt
 sed -i "s/PrivateMounts=.*/PrivateMounts=no/g" /lib/systemd/system/systemd-udevd.service
 
 # install framebuffer image viewer & automount usb
-apt install fbi usbmount
+apt-get install -y fbi usbmount
 
 # install pipeviewer
-apt install pv
+apt-get install -y pv
 
 # install node
 curl -fsSL https://deb.nodesource.com/setup_14.x | -E bash -
@@ -60,7 +60,7 @@ cd /indaba/supervisor && npm i
 touch /indaba/.supervisorinstalled
 
 # install dnsmasq
-apt install dnsmasq
+apt-get install -y dnsmasq
 
 echo "address=/#/10.10.10.1" >> /etc/dnsmasq.conf
 echo "no-resolv" >> /etc/dnsmasq.conf

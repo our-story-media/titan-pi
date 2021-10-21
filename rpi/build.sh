@@ -47,7 +47,7 @@ touch ./pi-gen/stage4/SKIP_IMAGES ./pi-gen/stage5/SKIP_IMAGES
 
 cd pi-gen
 
-docker-compose up -d
+# docker-compose up -d
 
 # Uncomment the following line to speed up building
 # touch ./stage0/SKIP ./stage1/SKIP
