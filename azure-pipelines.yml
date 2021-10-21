@@ -2,9 +2,7 @@
 # Build a Docker image 
 # https://docs.microsoft.com/azure/devops/pipelines/languages/docker
 
-pool:
- name: Default
- demands: ISLOCAL
+
 
 trigger:
 - master
@@ -19,7 +17,8 @@ stages:
   - job: Build
     displayName: Build
     pool:
-      vmImage: 'ubuntu-latest'
+      name: Default
+      demands: ISLOCAL
     steps:
     - task: Bash@3
       inputs:
