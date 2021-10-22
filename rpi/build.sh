@@ -35,8 +35,8 @@ rm ./pi-gen/stage2/EXPORT_NOOBS
 # rm ./pi-gen/stage1/SKIP
 
 ## DEBUG!
-touch ./pi-gen/stage2/01-sys-tweaks/files/indaba-update.tar
-echo "test-version" > VERSION
+# touch ./pi-gen/stage2/01-sys-tweaks/files/indaba-update.tar
+# echo "test-version" > VERSION
 
 if [ -f "./pi-gen/stage2/01-sys-tweaks/files/indaba-update.tar" ]; then
   echo "tar already exists"
@@ -58,11 +58,11 @@ cd pi-gen
 
 set -e
 
-# DOCKER_BUILDKIT=1 CLEAN=1 CONTINUE=1 ./build-docker.sh
+DOCKER_BUILDKIT=1 CLEAN=1 CONTINUE=1 ./build-docker.sh
 
 cd ..
 
-echo "${pwd}"
+# echo "${pwd}"
 
 mkdir -p ./sdcard
 
@@ -71,8 +71,8 @@ VERSION=`cat ./VERSION`
 FILENAME=indaba-rpi-$VERSION.zip
 
 ## DEBUG!
-mkdir -p ./pi-gen/deploy
-touch ./pi-gen/deploy/deploy.zip
+# mkdir -p ./pi-gen/deploy
+# touch ./pi-gen/deploy/deploy.zip
 
 echo "Copying file from deploy to sdcard"
 
