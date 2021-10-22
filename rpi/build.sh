@@ -62,6 +62,8 @@ set -e
 
 cd ..
 
+echo "${pwd}"
+
 mkdir -p ./sdcard
 
 VERSION=`cat ./VERSION`
@@ -69,8 +71,9 @@ VERSION=`cat ./VERSION`
 FILENAME=indaba-rpi-$VERSION.zip
 
 ## DEBUG!
+mkdir -p ./pi-gen/deploy
 touch ./pi-gen/deploy/deploy.zip
 
 echo "Copying file from deploy to sdcard"
 
-cp $(ls -Art ./deploy/*.zip | tail -n 1) ./sdcard/$FILENAME
+cp $(ls -Art ./pi-gen/deploy/*.zip | tail -n 1) ./sdcard/$FILENAME
