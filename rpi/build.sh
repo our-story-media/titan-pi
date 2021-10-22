@@ -54,7 +54,9 @@ cd pi-gen
 
 set -e
 
-DOCKER_BUILDKIT=1 CLEAN=1 CONTINUE=1 ./build-docker.sh
+# DOCKER_BUILDKIT=1 CLEAN=1 CONTINUE=1 ./build-docker.sh
+
+cd ..
 
 mkdir -p ./sdcard
 
@@ -63,6 +65,8 @@ VERSION=`cat ../VERSION`
 FILENAME=indaba-rpi-$VERSION.zip
 
 #for debug
-# touch ./pi-gen/deploy/deploy.zip
+touch ./pi-gen/deploy/deploy.zip
+
+echo "Copying file from deploy to sdcard"
 
 cp $(ls -Art ./deploy/*.zip | tail -n 1) ./sdcard/$FILENAME
