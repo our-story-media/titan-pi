@@ -84,12 +84,6 @@ async function update(pathin) {
     console.error(e);
   }
 
-  // try {
-  //   await mkdir(`${path.join(pathin, "indaba-logs", logdir)}`);
-  // } catch (e) {
-  //   console.error(e);
-  // }
-
   console.log("Copying local logs...");
   try {
     await runExec(
@@ -259,5 +253,31 @@ async function start() {
   }
 }
 
+// checks if this is the first time that its been installed (first boot)
+async function initialInstall() {
+  try {
+    if (!fs.existsSync("/indaba/.titaninstalled")) {
+      //run temp web server:
+      startServer();
+
+      console.log("Loading New Image");
+
+      await runExecProgress(`pv -n "/indaba/indaba-update.tar" | docker load`); //output is on stderr
+
+      currentPercentage = "rebooting...";
+
+      stopServer();
+
+      console.log("Run Install Script to Complete Update (now rebooting)");
+
+      runExec("reboot");
+    }
+  } catch (e) {
+    console.error("Initial Load Failed!");
+    console.error(e);
+  }
+}
+
 console.log(`Started (${version.version})...`);
+initialInstall();
 start();

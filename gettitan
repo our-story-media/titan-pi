@@ -47,44 +47,44 @@ if docker image inspect bootlegger/titan-compact > /dev/null 2>&1 ; then
   echo_time "Image already installed"
 else
   if [ -f "/indaba/indaba-update.tar" ]; then
-    echo_time "Loading image from file"
-    sudo docker load -i /indaba/indaba-update.tar
+    echo_time "Waiting for image to be loaded from local cache (by )..."
+    # sudo docker load -i /indaba/indaba-update.tar
   else
-    echo "Pulling Images to Local Cache"
+    echo_time "Pulling Images to Local Cache"
     sudo docker pull bootlegger/titan-compact
   fi
 fi
 
-if [ ! -f ".supervisorinstalled" ]; then
+# if [ ! -f ".supervisorinstalled" ]; then
 
-  echo_time "Installing Supervisor"
+#   echo_time "Installing Supervisor"
 
-  echo_time "Downloading Supervisor"
+#   echo_time "Downloading Supervisor"
 
-  if [ -f "/indaba/indaba-supervisor" ]; then
-    cp /indaba/indaba-supervisor .
-  else
-    curl https://raw.githubusercontent.com/our-story-media/ourstory-titan/master/install/supervisor/build/indaba-supervisor -s -o indaba-supervisor
-  fi
+#   if [ -f "/indaba/indaba-supervisor" ]; then
+#     cp /indaba/indaba-supervisor .
+#   else
+#     curl https://raw.githubusercontent.com/our-story-media/ourstory-titan/master/install/supervisor/build/indaba-supervisor -s -o indaba-supervisor
+#   fi
 
-  echo_time "Changing Mode on Supervisor"
+#   echo_time "Changing Mode on Supervisor"
 
-  chmod +x indaba-supervisor
+#   chmod +x indaba-supervisor
 
-  echo_time "Add supervisor to startup"
+#   echo_time "Add supervisor to startup"
 
-  #fix for RPi4 Buster
+#   #fix for RPi4 Buster
 
-  # /lib/systemd/system/systemd-udevd.service
-  # change to PrivateMounts=no (requires a reboot)
+#   # /lib/systemd/system/systemd-udevd.service
+#   # change to PrivateMounts=no (requires a reboot)
 
-  sudo sed -i "s/PrivateMounts=.*/PrivateMounts=no/g" /lib/systemd/system/systemd-udevd.service
+#   sudo sed -i "s/PrivateMounts=.*/PrivateMounts=no/g" /lib/systemd/system/systemd-udevd.service
 
-  sudo sed -i -e "$ i\sudo bash -c '/indaba/indaba-supervisor > /indaba/supervisor.log 2>&1' &" /etc/rc.local
+#   sudo sed -i -e "$ i\sudo bash -c '/indaba/indaba-supervisor > /indaba/supervisor.log 2>&1' &" /etc/rc.local
 
-  touch .supervisorinstalled
+#   touch .supervisorinstalled
 
-fi
+# fi
 
 echo_time "Changing perms of ./upload"
 
@@ -97,48 +97,43 @@ docker volume create indaba-redis
 
 MAC_ADDRESS=`ifconfig eth0 | grep -o -E '([[:xdigit:]]{1,2}:){5}[[:xdigit:]]{1,2}'`
 
-sudo docker run \
- --name indaba -d \
- --restart always \
- --log-driver json-file \
- --log-opt compress=true \
- --log-opt max-size=10m \
- --log-opt max-file=5 \
- --add-host=redis:127.0.0.1 \
- --add-host=mongo:127.0.0.1 \
- --add-host=beanstalk:127.0.0.1 \
- --add-host=web:127.0.0.1 \
- -e sails_LOGINCODE=$MAC_ADDRESS \
- -e sails_master_url="http://10.10.10.1:8845" \
- -e sails_FAKES3URL="http://10.10.10.1:8845/upload/" \
- -e sails_FAKES3URL_TRANSCODE="http://10.10.10.1:8845/upload/transcode/upload/" \
- -p "80:88" \
- -p "8845:80" \
- -v indaba-db:/data/db \
- -v indaba-redis:/redis \
- -v "/indaba/upload:/usr/src/app/upload" \
- -v /media:/usbdrive:shared \
- bootlegger/titan-compact
+if docker image inspect bootlegger/titan-compact > /dev/null 2>&1 ; then
+  echo_time "Image exists, starting container"
 
-echo_time "Printing Password"
+  sudo docker run \
+  --name indaba -d \
+  --restart always \
+  --log-driver json-file \
+  --log-opt compress=true \
+  --log-opt max-size=10m \
+  --log-opt max-file=5 \
+  --add-host=redis:127.0.0.1 \
+  --add-host=mongo:127.0.0.1 \
+  --add-host=beanstalk:127.0.0.1 \
+  --add-host=web:127.0.0.1 \
+  -e sails_LOGINCODE=$MAC_ADDRESS \
+  -e sails_master_url="http://10.10.10.1:8845" \
+  -e sails_FAKES3URL="http://10.10.10.1:8845/upload/" \
+  -e sails_FAKES3URL_TRANSCODE="http://10.10.10.1:8845/upload/transcode/upload/" \
+  -p "80:88" \
+  -p "8845:80" \
+  -v indaba-db:/data/db \
+  -v indaba-redis:/redis \
+  -v "/indaba/upload:/usr/src/app/upload" \
+  -v /media:/usbdrive:shared \
+  bootlegger/titan-compact
 
-echo $MAC_ADDRESS > password.txt
+  echo_time "Printing Password"
 
-echo_time "Marking as Installed"
+  echo $MAC_ADDRESS > password.txt
 
-touch .titaninstalled
+  echo_time "Marking as Installed"
 
-# echo_time "Power Saving Options"
+  touch .titaninstalled
 
-# echo "Disable HDMI"
-
-# sudo /opt/vc/bin/tvservice -o
-
-# echo_time "Disable WiFi + BLE"
-
-# sudo echo_time echo "dtoverlay=pi3-disable-wifi" >> /boot/config.txt
- 
-# sudo echo_time echo "dtoverlay=pi3-disable-bt" >> /boot/config.txt
+else
+  echo_time "No image, load one!"
+fi
 
 echo_time "Going for reboot in 1 min"
 

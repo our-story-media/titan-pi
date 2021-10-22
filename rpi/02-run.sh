@@ -78,4 +78,11 @@ systemctl enable splashscreen
 
 # disable console on boot
 echo "console=serial0,115200 console=tty3 root=ROOTDEV rootfstype=ext4 elevator=deadline fsck.repair=yes rootwait splash quiet plymouth.ignore-serial-consoles logo.nologo disable_overscan=1" > /boot/cmdline.txt
+
+# disable bluetooth:
+sudo apt-get purge bluez -y
+sudo apt-ge autoremove -y
+
+echo "dtoverlay=disable-bt" >> /boot/config.txt
+
 EOF
