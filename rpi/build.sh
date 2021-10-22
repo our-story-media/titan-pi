@@ -34,6 +34,10 @@ rm ./pi-gen/stage2/EXPORT_NOOBS
 # rm ./pi-gen/stage0/SKIP
 # rm ./pi-gen/stage1/SKIP
 
+## DEBUG!
+touch ./pi-gen/stage2/01-sys-tweaks/files/indaba-update.tar
+echo "test-version" > VERSION
+
 if [ -f "./pi-gen/stage2/01-sys-tweaks/files/indaba-update.tar" ]; then
   echo "tar already exists"
 else
@@ -64,7 +68,7 @@ VERSION=`cat ../VERSION`
 
 FILENAME=indaba-rpi-$VERSION.zip
 
-#for debug
+## DEBUG!
 touch ./pi-gen/deploy/deploy.zip
 
 echo "Copying file from deploy to sdcard"
