@@ -192,7 +192,7 @@ async function update(pathin) {
     console.log("Removing Install Marker");
 
     try {
-      await runExec("rm .titaninstalled");
+      await runExec("rm /indaba/.titaninstalled");
     } catch (e) {
       console.error(e);
     }
