@@ -64,7 +64,7 @@ cd ..
 
 mkdir -p ./sdcard
 
-VERSION=`cat ../VERSION`
+VERSION=`cat ./VERSION`
 
 FILENAME=indaba-rpi-$VERSION.zip
 
