@@ -256,6 +256,9 @@ async function start() {
 // checks if this is the first time that its been installed (first boot)
 async function initialInstall() {
   try {
+    //wait for the gettitan script to fire up and start the container
+    await sleep(5000);
+
     if (!fs.existsSync("/indaba/.titaninstalled")) {
       //run temp web server:
       startServer();

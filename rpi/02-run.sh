@@ -81,7 +81,7 @@ echo "console=serial0,115200 console=tty3 root=ROOTDEV rootfstype=ext4 elevator=
 
 # disable bluetooth:
 sudo apt-get purge bluez -y
-sudo apt-ge autoremove -y
+sudo apt-get autoremove -y
 
 echo "dtoverlay=disable-bt" >> /boot/config.txt
 
