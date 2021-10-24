@@ -47,7 +47,7 @@ if docker image inspect bootlegger/titan-compact > /dev/null 2>&1 ; then
   echo_time "Image already installed"
 else
   if [ -f "/indaba/indaba-update.tar" ]; then
-    echo_time "Waiting for image to be loaded from local cache (by )..."
+    echo_time "Waiting for image to be loaded from local cache (by supervisor)..."
     # sudo docker load -i /indaba/indaba-update.tar
   else
     echo_time "Pulling Images to Local Cache"

@@ -26,6 +26,18 @@ function runExec(cmd) {
   });
 }
 
+function runExecResult(cmd) {
+  const exec = require("child_process").exec;
+  return new Promise((resolve, reject) => {
+    exec(cmd, (error, stdout, stderr) => {
+      // if (error) {
+      //   console.warn(error);
+      // }
+      resolve(error ? false : true);
+    });
+  });
+}
+
 function runExecProgress(cmd) {
   const exec = require("child_process").exec;
   return new Promise((resolve, reject) => {
@@ -36,7 +48,11 @@ function runExecProgress(cmd) {
       resolve(stdout ? stdout : stderr);
     });
     proc.stderr.on("data", (chunk) => {
-      currentPercentage = chunk;
+      try {
+        currentPercentage = chunk.split("\n")[0];
+      } catch {
+        currentPercentage = chunk;
+      }
     });
   });
 }
@@ -257,9 +273,17 @@ async function start() {
 async function initialInstall() {
   try {
     //wait for the gettitan script to fire up and start the container
-    await sleep(5000);
+    // await sleep(5000);
 
-    if (!fs.existsSync("/indaba/.titaninstalled")) {
+    let imageExists = false;
+
+    imageExists = await runExecResult(
+      "docker image inspect bootlegger/titan-compact"
+    );
+
+    console.log(`Initial Image Exists: ${imageExists}`);
+
+    if (imageExists === false) {
       //run temp web server:
       startServer();
 
