@@ -84,5 +84,8 @@ sudo apt-get purge bluez -y
 sudo apt-get autoremove -y
 
 echo "dtoverlay=disable-bt" >> /boot/config.txt
+echo "dtoverlay=pi3-disable-wifi" >> /boot/config.txt
+
+sudo /opt/vc/bin/tvservice -o
 
 EOF
