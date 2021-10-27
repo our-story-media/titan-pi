@@ -42,8 +42,8 @@ if [ -f "./pi-gen/stage2/01-sys-tweaks/files/indaba-update.tar" ]; then
   echo "tar already exists"
 else
   echo "downloading docker tar file"
-  curl -SL https://d2co3wsaqlrb1k.cloudfront.net/indaba-update.version --output ./VERSION
-  curl -SL https://d2co3wsaqlrb1k.cloudfront.net/indaba-update.tar --output ./pi-gen/stage2/01-sys-tweaks/files/indaba-update.tar
+  curl -SL https://download.indaba.dev/indaba-update.version --output ./VERSION
+  curl -SL https://download.indaba.dev/indaba-update.tar --output ./pi-gen/stage2/01-sys-tweaks/files/indaba-update.tar
 fi
 
 touch ./pi-gen/stage3/SKIP ./pi-gen/stage4/SKIP ./pi-gen/stage5/SKIP
