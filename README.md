@@ -2,7 +2,7 @@
 
 [![CircleCI](https://circleci.com/gh/our-story-media/titan-pi/tree/master.svg?style=svg)](https://circleci.com/gh/our-story-media/titan-pi/tree/master)
 
-Download the SD Card image at https://d2co3wsaqlrb1k.cloudfront.net/indaba-rpi.zip and then use [Balena Etcher](https://www.balena.io/etcher/) to copy it to an SD card.
+Download the SD Card image at https://download.indaba.dev/indaba-rpi.zip and then use [Balena Etcher](https://www.balena.io/etcher/) to copy it to an SD card.
 
 # DevOps
 
