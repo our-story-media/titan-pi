@@ -174,6 +174,7 @@ async function update(pathin) {
     runExec("reboot");
   }
 
+  //checks for docker update:
   console.log("Checking for Update...");
 
   let filename = path.join(pathin, "indaba-update.tar");
