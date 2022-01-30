@@ -95,7 +95,7 @@ async function update(pathin) {
   console.log(`Creating ${logdir}`);
 
   try {
-    await fs.ensureDir(`${path.join(pathin, "indaba-logs", logdir)}`);
+    await fs.ensureDir(`${path.join(pathin, "indaba", "indaba-logs", logdir)}`);
   } catch (e) {
     console.error(e);
   }
@@ -103,7 +103,7 @@ async function update(pathin) {
   console.log("Copying local logs...");
   try {
     await runExec(
-      `cp /indaba/*.log "${path.join(pathin, "indaba-logs", logdir)}"`
+      `cp /indaba/*.log "${path.join(pathin, "indaba", "indaba-logs", logdir)}"`
     );
   } catch (e) {
     console.error(e);
@@ -130,7 +130,9 @@ async function update(pathin) {
   if (fs.existsSync(assettrigger)) {
     console.log("Starting emergency asset backup");
     try {
-      await fs.ensureDir(`${path.join(pathin, "indaba-em-backup", backupdir)}`);
+      await fs.ensureDir(
+        `${path.join(pathin, "indaba", "indaba-em-backup", backupdir)}`
+      );
     } catch (e) {
       console.error(e);
     }
@@ -148,7 +150,12 @@ async function update(pathin) {
     console.log("Copying upload directory...");
     try {
       await runExec(
-        `cp -R ./upload  "${path.join(pathin, "indaba-em-backup", backupdir)}"`
+        `cp -R ./upload  "${path.join(
+          pathin,
+          "indaba",
+          "indaba-em-backup",
+          backupdir
+        )}"`
       );
     } catch (e) {
       console.error(e);
