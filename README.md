@@ -48,4 +48,4 @@ If the drive contains a file called `indaba-update.tar` in the root, it stops th
 
 ### Emergency Asset Copy
 
-If the drive contains a file called `EMERGENCYBACKUP`, then the assets directory (i.e. videos, content) will be directly copied to the drive. This method is only to be used when the Indaba application cannot be started, and the UI for normal backups be used.
+If the drive contains a file called `EMERGENCYBACKUP`, then the assets directory (i.e. videos, content) will be directly copied to the drive. This method is only to be used when the Indaba application cannot be started, and the UI for normal backups cannot be used.

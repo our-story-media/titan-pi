@@ -205,6 +205,12 @@ async function update(pathin) {
       console.error(e);
     }
 
+    try {
+      await runExec("docker system prune -f");
+    } catch (e) {
+      console.error(e);
+    }
+
     console.log("Renaming source file");
 
     try {
@@ -232,9 +238,9 @@ async function update(pathin) {
   }
 }
 
-function sleep(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
+// function sleep(ms) {
+//   return new Promise((resolve) => setTimeout(resolve, ms));
+// }
 
 async function start() {
   try {
