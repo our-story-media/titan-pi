@@ -49,3 +49,17 @@ If the drive contains a file called `indaba-update.tar` in the root, it stops th
 ### Emergency Asset Copy
 
 If the drive contains a file called `EMERGENCYBACKUP`, then the assets directory (i.e. videos, content) will be directly copied to the drive. This method is only to be used when the Indaba application cannot be started, and the UI for normal backups cannot be used.
+
+## Build Process
+
+This RPI image is built by configuring the official RaspberryPI OS Repo. When running a build, the following happens, initiated by the `rpi/build.sh` script:
+
+- A tar of the docker application is downloaded locally.
+- The official pi-gen repo is cloned.
+- Config files for configuring the pi-gen build are copied into the pi-gen directory. The tar file is stored as `/indaba/indaba-update.tar` in the filesystem of the image.
+- The pi-gen build file is run, this creates the rpi image, installs all the right dependencies for docker, and sets up both the indaba-supervisor service and indaba service to run on boot.
+- The resulting .img file is produced, and then uploaded to S3.
+
+The indaba-supervisor service runs a node.js application which monitors for USB drive insertion, and facilitates updates, backups etc (as described above).
+
+The indaba service runs the `gettitan` script, which performs initial rpi runtime configuration (like expanding the filesystem), loads the very first version of the docker application (from /indaba/indaba-update.tar) and then creates the docker container with all mounts and volumes.
