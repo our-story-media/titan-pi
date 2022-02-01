@@ -6,7 +6,7 @@ if [ -d "pi-gen" ]; then
     echo "pi-gen already cloned"
 else
     git clone https://github.com/RPi-Distro/pi-gen.git
-    cd pi-gen && git checkout 2021-05-07-raspbian-buster
+    cd ./pi-gen && git checkout 2021-05-07-raspbian-buster
 fi
 
 cp config ./pi-gen/config
