@@ -58,6 +58,7 @@ This RPI image is built by configuring the official RaspberryPI OS Repo. When ru
 - The official pi-gen repo is cloned.
 - Config files for configuring the pi-gen build are copied into the pi-gen directory. The tar file is stored as `/indaba/indaba-update.tar` in the filesystem of the image.
 - The pi-gen build file is run, this creates the rpi image, installs all the right dependencies for docker, and sets up both the indaba-supervisor service and indaba service to run on boot.
+- Files are renamed according to the version information downloaded when the .tar file was obtained.
 - The resulting .img file is produced, and then uploaded to S3.
 
 The indaba-supervisor service runs a node.js application which monitors for USB drive insertion, and facilitates updates, backups etc (as described above).
