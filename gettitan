@@ -116,8 +116,8 @@ if docker image inspect bootlegger/titan-compact > /dev/null 2>&1 ; then
   -e sails_FAKES3URL="http://10.10.10.1:8845/upload/" \
   -e sails_FAKES3URL_TRANSCODE="http://10.10.10.1:8845/upload/transcode/upload/" \
   -e sails_RENDERPROFILE="dv_pal_wide" \
-  -e sails_RENDERWIDTH=720 \
-  -e sails_RENDERHEIGHT=576 \
+  -e sails_RENDERWIDTH=848 \
+  -e sails_RENDERHEIGHT=480 \
   -p "80:88" \
   -p "8845:80" \
   -v indaba-db:/data/db \
