@@ -89,6 +89,8 @@ echo "console=serial0,115200 console=tty3 root=ROOTDEV rootfstype=ext4 elevator=
 sudo apt-get purge bluez -y
 sudo apt-get autoremove -y
 
+#low-power settings:
+
 echo "dtoverlay=disable-bt" >> /boot/config.txt
 echo "dtoverlay=pi3-disable-wifi" >> /boot/config.txt
 echo "dtoverlay=disable-bt" >> /boot/config.txt
