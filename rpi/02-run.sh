@@ -67,6 +67,12 @@ echo "no-resolv" >> /etc/dnsmasq.conf
 echo "bogus-priv" >> /etc/dnsmasq.conf
 echo "domain-needed" >> /etc/dnsmasq.conf
 
+#set static IP:
+echo "interface eth0" >> /etc/dhcpcd.conf 
+echo "static ip_address=10.10.10.1/24" >> /etc/dhcpcd.conf
+echo "static routers=10.10.10.254" >> /etc/dhcpcd.conf
+echo "static domain_name_servers=10.10.10.254" >> /etc/dhcpcd.conf
+
 #enable indaba
 systemctl enable indaba
 
@@ -85,5 +91,10 @@ sudo apt-get autoremove -y
 
 echo "dtoverlay=disable-bt" >> /boot/config.txt
 echo "dtoverlay=pi3-disable-wifi" >> /boot/config.txt
+echo "dtoverlay=disable-bt" >> /boot/config.txt
+echo "dtparam=eth_led0=4" >> /boot/config.txt
+echo "dtparam=eth_led1=4" >> /boot/config.txt
+echo "dtparam=act_led_trigger=none" >> /boot/config.txt
+echo "dtparam=act_led_activelow=off" >> /boot/config.txt
 
 EOF
