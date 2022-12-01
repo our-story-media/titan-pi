@@ -60,7 +60,7 @@ cd /indaba/supervisor && npm i
 touch /indaba/.supervisorinstalled
 
 # install dnsmasq
-apt-get install -y dnsmasq
+apt-get install -y dnsmasq dhcpcd5
 
 echo "address=/#/10.10.10.1" >> /etc/dnsmasq.conf
 echo "no-resolv" >> /etc/dnsmasq.conf
