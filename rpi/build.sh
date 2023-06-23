@@ -5,8 +5,8 @@ echo "Working in $(pwd)"
 if [ -d "pi-gen" ]; then
     echo "pi-gen already cloned"
 else
-    git clone https://github.com/RPi-Distro/pi-gen.git
-    cd ./pi-gen && git checkout 2022-09-22-raspios-buster && cd ..
+    git clone --branch arm64 https://github.com/RPi-Distro/pi-gen.git
+    cd ./pi-gen && cd ..
 fi
 
 cp config ./pi-gen/config
