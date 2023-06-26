@@ -154,7 +154,23 @@ async function update(pathin) {
           pathin,
           "indaba",
           "indaba-em-backup",
-          backupdir
+          backupdir,
+          "upload"
+        )}"`
+      );
+    } catch (e) {
+      console.error(e);
+    }
+
+    console.log("Copying db directory...");
+    try {
+      await runExec(
+        `cp -R /data/db  "${path.join(
+          pathin,
+          "indaba",
+          "indaba-em-backup",
+          backupdir,
+          "db"
         )}"`
       );
     } catch (e) {

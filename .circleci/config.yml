@@ -2,10 +2,18 @@
 # See: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
 
+parameters:
+  run_deploy:
+    default: true
+    type: boolean
+
+  run_update:
+    default: false
+    type: boolean
 
 
 jobs:
-  build: # name of your job
+  image: # name of your job
     machine: # executor type
       image: ubuntu-2004:202107-02
     steps:
@@ -21,9 +29,26 @@ jobs:
           command: 'sh upload.sh'
           working_directory: './rpi'
 
+  updates: # name of your job
+    machine: # executor type
+      image: ubuntu-2004:202101-01
+    resource_class: arm.medium
+    steps:
+      - checkout
+      - run:
+          name: "Build and Tag Docker"
+          command: 'sh buildandtag.sh'
+          working_directory: './docker'
+
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
-  main:
+  deployrpi:
     jobs:
-      - build
+      - image
+    when: << pipeline.parameters.run_deploy >>
+  
+  deploydocker:
+    jobs:
+      - updates
+    when: << pipeline.parameters.run_update >>

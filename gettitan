@@ -120,7 +120,7 @@ if docker image inspect bootlegger/titan-compact > /dev/null 2>&1 ; then
   -e sails_RENDERHEIGHT=480 \
   -p "80:88" \
   -p "8845:80" \
-  -v indaba-db:/data/db \
+  -v /data/db:/data/db \
   -v indaba-redis:/redis \
   -v "/indaba/upload:/usr/src/app/upload" \
   -v /media:/usbdrive:shared \
