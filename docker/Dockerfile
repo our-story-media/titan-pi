@@ -24,7 +24,7 @@ RUN echo "BUILDING FOR $TARGETPLATFORM" && if [ "$TARGETPLATFORM" = "linux/arm/v
   PACKAGES="" && \ 
   if [ ! "$TARGETPLATFORM" = "linux/arm/v7" ] ; then PACKAGES="mongodb" ; fi && \
   apt-get update -q && \
-  apt-get install -q -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" -y nginx redis-server beanstalkd libav-tools melt rsync $PACKAGES && \
+  apt-get install -q -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" -y nginx redis-server beanstalkd ffmpeg melt rsync xvfb $PACKAGES && \
   WORKER_TAG=$(git ls-remote --tags --refs https://github.com/our-story-media/ourstory-worker | grep -o 'refs/tags/v[0-9]*\.[0-9]*\.[0-9]*' | sort -r -V | head -n 1 | grep -o '[^\/]*$') && \
   SERVER_TAG=$(git ls-remote --tags --refs https://github.com/our-story-media/ourstory-server | grep -o 'refs/tags/v[0-9]*\.[0-9]*\.[0-9]*' | sort -r -V | head -n 1 | grep -o '[^\/]*$') && \
   git clone --branch $SERVER_TAG --depth=1 https://github.com/our-story-media/ourstory-server && git clone --branch $WORKER_TAG --depth=1 https://github.com/our-story-media/ourstory-worker
