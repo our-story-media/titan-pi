@@ -45,7 +45,7 @@ sed -i -e "$ i\disable_splash=1" /boot/config.txt
 sed -i "s/PrivateMounts=.*/PrivateMounts=no/g" /lib/systemd/system/systemd-udevd.service
 
 # install framebuffer image viewer & automount usb
-apt-get install -y fbi usbmount
+apt-get update && apt-get install -y fbi usbmount
 
 # install pipeviewer
 apt-get install -y pv
