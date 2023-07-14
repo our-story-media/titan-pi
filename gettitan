@@ -92,7 +92,6 @@ sudo chmod 777 upload
 
 echo_time "Starting Titan"
 
-docker volume create indaba-db
 docker volume create indaba-redis
 
 MAC_ADDRESS=`ifconfig eth0 | grep -o -E '([[:xdigit:]]{1,2}:){5}[[:xdigit:]]{1,2}'`
