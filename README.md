@@ -8,7 +8,11 @@ Download the SD Card image at https://download.indaba.dev/indaba-rpi.zip and the
 
 Before deploying a new version of Indaba Titan, the indaba-titan.tar docker image needs updating to S3. Use the scripts in the ourstory-server repository to perform this update.
 
-This repo is built in CircleCI. It produces a single .zip file, first downloading the latest version of the indaba-titan.tar docker update image from S3. The name of the .zip file produced will contain the versions of both indaba-server and indaba-worker that the image contains. This file is then uploaded to S3, and copied to indaba-rpi.zip. This zip file can be flashed directly onto an SD card for use in a rapsberry pi.
+This repo is built in CircleCI.
+
+The `image` workflow produces a single .zip file, first downloading the latest version of the indaba-titan.tar docker update image from S3. The name of the .zip file produced will contain the versions of both indaba-server and indaba-worker that the image contains. This file is then uploaded to S3, and copied to indaba-rpi.zip. This zip file can be flashed directly onto an SD card for use in a rapsberry pi.
+
+The `updates` workflow produces the `indaba-update.tar` file with an armv7 docker image to replace the one bundled with the `image` built previously.
 
 <!-- To bootstrap installer, run
 
