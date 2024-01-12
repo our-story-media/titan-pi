@@ -114,6 +114,7 @@ async function update(pathin) {
     await runExec(
       `docker logs indaba > "${path.join(
         pathin,
+        "indaba",
         "indaba-logs",
         `${logdir}/docker.log`
       )}"`
