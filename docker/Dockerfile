@@ -3,7 +3,7 @@ FROM node:10-buster
 ARG TARGETPLATFORM
 
 RUN echo "BUILDING FOR $TARGETPLATFORM" && if [ "$TARGETPLATFORM" = "linux/arm/v7" ] ; then \
-  wget https://andyfelong.com/downloads/mongodb_stretch_3_0_14_core.zip && wget https://andyfelong.com/downloads/mongodb_stretch_3_0_14_tools.zip && \
+  wget --no-check-certificate https://andyfelong.com/downloads/mongodb_stretch_3_0_14_core.zip && wget --no-check-certificate https://andyfelong.com/downloads/mongodb_stretch_3_0_14_tools.zip && \
   unzip mongodb_stretch_3_0_14_core.zip && \
   unzip mongodb_stretch_3_0_14_tools.zip && \
   chmod 755 ./tools/* && \
