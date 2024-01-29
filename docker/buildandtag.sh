@@ -15,7 +15,7 @@ echo $VERSION > indaba-update.version
 
 echo "Saving to tar file"
 
-docker save -o indaba-update.tar bootlegger/titan-compact:latest
+docker save bootlegger/titan-compact:latest | gzip > indaba-update.tar
 
 echo "Upload to S3"
 
