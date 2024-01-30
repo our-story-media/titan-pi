@@ -16,6 +16,7 @@ jobs:
   image: # name of your job
     machine: # executor type
       image: ubuntu-2004:202107-02
+    resource_class: arm.large
     steps:
       - checkout
       - run:
