@@ -45,7 +45,7 @@ sed -i -e "$ i\disable_splash=1" /boot/config.txt
 sed -i "s/PrivateMounts=.*/PrivateMounts=no/g" /lib/systemd/system/systemd-udevd.service
 
 # install framebuffer image viewer & automount usb && exfat support
-apt-get install -y fbi usbmount exfat-fuse exfatprogs
+apt-get install -y fbi usbmount exfat-fuse exfatprogs exfat-utils
 
 # install pipeviewer
 apt-get install -y pv
