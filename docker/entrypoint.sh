@@ -5,7 +5,7 @@ echo "Recovering from Data Loss"
 
 mongod --dbpath=/data/db --repair
 
-APPS=("mongod" "redis-server --dir /redis --appendonly yes" "beanstalkd" "nginx -g \"daemon off;\"")
+APPS=("mongod" "redis-server --dir /redis --appendonly yes" "beanstalkd -b" "nginx -g \"daemon off;\"")
 
 for ((i = 0; i < ${#APPS[@]}; i++))
 do
