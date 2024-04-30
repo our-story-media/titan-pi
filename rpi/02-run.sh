@@ -38,6 +38,8 @@ usermod -aG docker indaba
 # Install Argon Fan & Power
 curl -k https://download.argon40.com/argon1.sh | bash
 
+echo "1=100" > /etc/argononed.conf
+
 # disable splash
 sed -i -e "$ i\disable_splash=1" /boot/config.txt
 
