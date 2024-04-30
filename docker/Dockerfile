@@ -55,7 +55,8 @@ RUN npm i --silent && \
   ln -s /ourstory-server/docker/server.local.conf /etc/nginx/conf.d/default.conf && \
   ln -s /ourstory-server/upload/ /ourstory-worker/ && \
   mkdir -p /data/db && \
-  mkdir -p /redis
+  mkdir -p /redis && \
+  mkdir -p /beanstlak &&
 
 COPY "redirect.conf"  /etc/nginx/conf.d/redirect.conf
 
@@ -66,6 +67,8 @@ RUN sed -i 's/set \$upstream http:\/\/web:1337;/set \$upstream http:\/\/127.0.0.
 VOLUME /data/db
 
 VOLUME /redis
+
+VOLUME /beanstalk
 
 COPY "entrypoint.sh" .
 
