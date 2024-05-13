@@ -56,7 +56,7 @@ RUN npm i --silent && \
   ln -s /ourstory-server/upload/ /ourstory-worker/ && \
   mkdir -p /data/db && \
   mkdir -p /redis && \
-  mkdir -p /beanstlak &&
+  mkdir -p /beanstalk
 
 COPY "redirect.conf"  /etc/nginx/conf.d/redirect.conf
 
