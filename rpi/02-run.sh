@@ -43,11 +43,22 @@ echo "1=100" > /etc/argononed.conf
 # disable splash
 sed -i -e "$ i\disable_splash=1" /boot/config.txt
 
+# Install right version of usbmount
+
+cd /tmp
+git clone https://github.com/rbrito/usbmount.git
+cd usbmount
+dpkg-buildpackage -us -uc -b
+cd ..
+apt install ./usbmount_0.0.24_all.deb
+
 # update for automount USB
 sed -i "s/PrivateMounts=.*/PrivateMounts=no/g" /lib/systemd/system/systemd-udevd.service
 
-# install framebuffer image viewer & automount usb && exfat support
-apt-get install -y fbi usbmount exfat-fuse exfat-utils
+sed -i "s/FILESYSTEMS=.*/FILESYSTEMS=vfat ext2 ext3 ext4 hfsplus ntfs exfat fuseblk/g" /etc/usbmount/usbmount.conf
+
+# install framebuffer image viewer && exfat support
+apt-get install -y fbi exfat-fuse exfat-utils
 
 # install pipeviewer
 apt-get install -y pv
