@@ -45,6 +45,8 @@ sed -i -e "$ i\disable_splash=1" /boot/config.txt
 
 # Install right version of usbmount
 
+apt-get install -y debhelper build-essential ntfs-3g
+
 cd /tmp
 git clone https://github.com/rbrito/usbmount.git
 cd usbmount
