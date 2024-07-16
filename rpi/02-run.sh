@@ -52,7 +52,7 @@ git clone https://github.com/rbrito/usbmount.git
 cd usbmount
 dpkg-buildpackage -us -uc -b
 cd ..
-apt install ./usbmount_0.0.24_all.deb
+apt install -y ./usbmount_0.0.24_all.deb
 
 # update for automount USB
 sed -i "s/PrivateMounts=.*/PrivateMounts=no/g" /lib/systemd/system/systemd-udevd.service
