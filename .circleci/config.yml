@@ -11,23 +11,22 @@ parameters:
     default: false
     type: boolean
 
-
 jobs:
   image: # name of your job
     machine: # executor type
-      image: ubuntu-2004:202107-02
+      image: default
     steps:
       - checkout
       - run:
           name: "Build RPI"
-          command: 'sh build.sh'
-          working_directory: './rpi'
+          command: "sh build.sh"
+          working_directory: "./rpi"
       - store_artifacts:
-          path: './rpi/sdcard'
+          path: "./rpi/sdcard"
       - run:
           name: "Upload to S3"
-          command: 'sh upload.sh'
-          working_directory: './rpi'
+          command: "sh upload.sh"
+          working_directory: "./rpi"
 
   updates: # name of your job
     machine: # executor type
@@ -37,8 +36,8 @@ jobs:
       - checkout
       - run:
           name: "Build and Tag Docker"
-          command: 'sh buildandtag.sh'
-          working_directory: './docker'
+          command: "sh buildandtag.sh"
+          working_directory: "./docker"
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
@@ -47,7 +46,7 @@ workflows:
     jobs:
       - image
     when: << pipeline.parameters.run_deploy >>
-  
+
   deploydocker:
     jobs:
       - updates
