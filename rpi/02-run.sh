@@ -52,7 +52,7 @@ git clone https://github.com/rbrito/usbmount.git
 cd usbmount
 dpkg-buildpackage -us -uc -b
 cd ..
-dpkg -i -y ./usbmount_0.0.24_all.deb
+dpkg -i ./usbmount_0.0.24_all.deb
 
 apt-get install -f
 
